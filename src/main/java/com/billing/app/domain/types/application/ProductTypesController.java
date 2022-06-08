@@ -1,8 +1,8 @@
 package com.billing.app.domain.types.application;
 
-import com.billing.app.domain.types.application.model.ProductType;
-import com.billing.app.domain.types.core.ports.incoming.CreateTypeService;
-import com.billing.app.domain.types.core.ports.incoming.ReadTypesService;
+import com.billing.app.domain.types.core.model.ProductType;
+import com.billing.app.domain.types.core.ports.incoming.CreateTypePort;
+import com.billing.app.domain.types.core.ports.incoming.ReadTypesPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,16 +16,16 @@ public class ProductTypesController {
 
 
 
-    private final CreateTypeService createTypeService;
-    private final ReadTypesService readTypesService;
+    private final CreateTypePort createTypePort;
+    private final ReadTypesPort readTypesPort;
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<ProductType> createType(@RequestBody ProductType productType){
-        return ResponseEntity.ok(productType);
+        return ResponseEntity.ok(createTypePort.createProductType(productType));
     }
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<Set<ProductType>> createType(){
-        return ResponseEntity.ok(Set.of(new ProductType("test", "test")));
+        return ResponseEntity.ok(readTypesPort.readAllTypes());
     }
 }
