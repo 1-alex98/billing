@@ -13,9 +13,6 @@ import java.util.Set;
 @RequestMapping("/types")
 @RequiredArgsConstructor
 public class ProductTypesController {
-
-
-
     private final CreateTypePort createTypePort;
     private final ReadTypesPort readTypesPort;
 
