@@ -27,21 +27,21 @@ public class StandardTypesService implements InitializeTypesPort {
                 "books",
                 "Books",
                 "Books can be read",
-                0.10,
+                0,
                 0.05
         ));
         typeDataBasePort.save(new ProductType(
                 "meds",
                 "medical products",
                 "Needed for medicine",
-                0.10,
+                0,
                 0.05
         ));
         typeDataBasePort.save(new ProductType(
-                "meds",
-                "medical equipment",
-                "Needed for medicine",
-                0.10,
+                "food",
+                "food",
+                "food and other eatable things",
+                0,
                 0.05
         ));
     }

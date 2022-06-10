@@ -8,10 +8,10 @@ import lombok.RequiredArgsConstructor;
 public class Item {
     private final String name;
     private final int quantity;
-    private final float price;
+    private final int price;
     private final boolean imported;
     private final String typeId;
-    private float sumRawPrice;
-    private float sumTaxes;
-    private float sumAfterTaxesPrice;
+    private int sumRawPrice;
+    private int sumTaxes;
+    private int sumAfterTaxesPrice;
 }

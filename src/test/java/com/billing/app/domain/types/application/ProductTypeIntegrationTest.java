@@ -1,4 +1,4 @@
-package com.billing.app.domain.billing.application;
+package com.billing.app.domain.types.application;
 
 import com.billing.app.domain.types.core.model.ProductType;
 import com.billing.app.domain.types.core.ports.outgoing.TypeDataBasePort;

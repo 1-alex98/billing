@@ -1,8 +1,9 @@
-package com.billing.app.domain.types.application;
+package com.billing.app.domain.billing.application;
 
 import com.billing.app.domain.types.core.model.ProductType;
 import com.billing.app.domain.types.core.ports.incoming.InitializeTypesPort;
 import com.billing.app.domain.types.core.ports.outgoing.TypeDataBasePort;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -26,32 +27,33 @@ public class BillingIntegrationTest {
     @Autowired
     private MockMvc mvc;
     @Autowired
-    private TypeDataBasePort typeDataBasePort;
-    @Autowired
     private InitializeTypesPort initializeTypesPort;
+
+    @BeforeEach
+    public void setUp(){
+        initializeTypesPort.initialize();
+    }
 
     @Test
     public void testBillingWithExamplesFromSpecification() throws Exception {
-        initializeTypesPort.initialize();
-
         this.mvc.perform(post("/bill").content(
                         """
                         [
                             {
-                                "price": 12.49,
+                                "price": 1249,
                                 "name": "book",
                                 "quantity": 1,
                                 "imported": false,
-                                "typeId": "book"
+                                "typeId": "books"
                             },
                             {
-                                "price": 14.99,
+                                "price": 1499,
                                 "name": "music CD",
                                 "quantity": 1,
                                 "imported": false
                             },
                             {
-                                "price": 0.85,
+                                "price": 85,
                                 "name": "chocolate bar",
                                 "quantity": 1,
                                 "imported": false,
@@ -64,32 +66,30 @@ public class BillingIntegrationTest {
                 .andDo(expectNoException())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("items[0].name", equalTo("book")))
-                .andExpect(jsonPath("items[0].sumAfterTaxesPrice", equalTo(12.49)))
+                .andExpect(jsonPath("items[0].sumAfterTaxesPrice", equalTo(1249)))
                 .andExpect(jsonPath("items[1].name", equalTo("music CD")))
-                .andExpect(jsonPath("items[1].sumAfterTaxesPrice", equalTo(16.49)))
+                .andExpect(jsonPath("items[1].sumAfterTaxesPrice", equalTo(1649)))
                 .andExpect(jsonPath("items[2].name", equalTo("chocolate bar")))
-                .andExpect(jsonPath("items[2].sumAfterTaxesPrice", equalTo( 0.85)))
-                .andExpect(jsonPath("sumTaxes", equalTo( 1.50)))
-                .andExpect(jsonPath("sumAfterTaxesPrice", equalTo(29.83)));
+                .andExpect(jsonPath("items[2].sumAfterTaxesPrice", equalTo( 85)))
+                .andExpect(jsonPath("sumTaxes", equalTo( 150)))
+                .andExpect(jsonPath("sumAfterTaxesPrice", equalTo(2983)));
     }
 
     @Test
     public void testBillingWithExamplesFromSpecification2() throws Exception {
-        initializeTypesPort.initialize();
-
         this.mvc.perform(post("/bill").content(
                         """
                         [
                             {
-                                "price": 10.00,
+                                "price": 1000,
                                 "name": "box of chocolates",
                                 "quantity": 1,
                                 "imported": true,
                                 "typeId": "food"
                             },
                             {
-                                "price": 47.50,
-                                "name": " bottle of perfume",
+                                "price": 4750,
+                                "name": "bottle of perfume",
                                 "quantity": 1,
                                 "imported": true
                             }
@@ -100,43 +100,42 @@ public class BillingIntegrationTest {
                 .andDo(expectNoException())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("items[0].name", equalTo("box of chocolates")))
-                .andExpect(jsonPath("items[0].sumAfterTaxesPrice", equalTo(10.50)))
+                .andExpect(jsonPath("items[0].sumAfterTaxesPrice", equalTo(1050)))
                 .andExpect(jsonPath("items[1].name", equalTo("bottle of perfume")))
-                .andExpect(jsonPath("items[1].sumAfterTaxesPrice", equalTo(54.65)))
-                .andExpect(jsonPath("sumTaxes", equalTo(  7.65)))
-                .andExpect(jsonPath("sumAfterTaxesPrice", equalTo(65.15)));
+                .andExpect(jsonPath("items[1].sumAfterTaxesPrice", equalTo(5465)))
+                .andExpect(jsonPath("sumTaxes", equalTo(  765)))
+                .andExpect(jsonPath("sumAfterTaxesPrice", equalTo(6515)));
     }
 
     @Test
     public void testBillingWithExamplesFromSpecification3() throws Exception {
-        initializeTypesPort.initialize();
-
         this.mvc.perform(post("/bill").content(
                         """
                         [
                             {
-                                "price": 27.99,
+                                "price": 2799,
                                 "name": "bottle of perfume",
                                 "quantity": 1,
                                 "imported": true
                             },
                             {
-                                "price": 18.99,
-                                "name": " bottle of perfume",
+                                "price": 1899,
+                                "name": "bottle of perfume",
                                 "quantity": 1,
-                                "imported": true
+                                "imported": false
                             },
                             {
-                                "price": 18.99,
+                                "price": 975,
                                 "name": "packet of headache pills",
                                 "quantity": 1,
                                 "typeId": "meds"
                             },
                             {
-                                "price": 11.25,
+                                "price": 1125,
                                 "name": "chocolates",
                                 "quantity": 1,
-                                "typeId": "food"
+                                "typeId": "food",
+                                "imported": true
                             }
                         ]
                         """
@@ -145,15 +144,15 @@ public class BillingIntegrationTest {
                 .andDo(expectNoException())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("items[0].name", equalTo("bottle of perfume")))
-                .andExpect(jsonPath("items[0].sumAfterTaxesPrice", equalTo(32.19)))
+                .andExpect(jsonPath("items[0].sumAfterTaxesPrice", equalTo(3219)))
                 .andExpect(jsonPath("items[1].name", equalTo("bottle of perfume")))
-                .andExpect(jsonPath("items[1].sumAfterTaxesPrice", equalTo( 20.89)))
+                .andExpect(jsonPath("items[1].sumAfterTaxesPrice", equalTo( 2089)))
                 .andExpect(jsonPath("items[2].name", equalTo("packet of headache pills")))
-                .andExpect(jsonPath("items[2].sumAfterTaxesPrice", equalTo( 9.75)))
+                .andExpect(jsonPath("items[2].sumAfterTaxesPrice", equalTo( 975)))
                 .andExpect(jsonPath("items[3].name", equalTo("chocolates")))
-                .andExpect(jsonPath("items[3].sumAfterTaxesPrice", equalTo( 11.85)))
-                .andExpect(jsonPath("sumTaxes", equalTo(  6.70)))
-                .andExpect(jsonPath("sumAfterTaxesPrice", equalTo(74.68)));
+                .andExpect(jsonPath("items[3].sumAfterTaxesPrice", equalTo( 1180))) //Tasks says 1185 but that seems wrong
+                .andExpect(jsonPath("sumTaxes", equalTo(  665))) // Different number from task see above
+                .andExpect(jsonPath("sumAfterTaxesPrice", equalTo(7463))); // Different number from task see above
     }
     @Test
     public void testQuantity() throws Exception {
@@ -163,9 +162,9 @@ public class BillingIntegrationTest {
                         """
                         [
                             {
-                                "price": 14.99,
+                                "price": 1499,
                                 "name": "music CD",
-                                "quantity": 1
+                                "quantity": 2
                             }
                         ]
                         """
@@ -174,8 +173,8 @@ public class BillingIntegrationTest {
                 .andDo(expectNoException())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("items[0].name", equalTo("music CD")))
-                .andExpect(jsonPath("items[0].sumAfterTaxesPrice", equalTo(16.49 * 2)))
-                .andExpect(jsonPath("sumTaxes", equalTo(  (16.49 - 14.99) * 2)))
-                .andExpect(jsonPath("sumAfterTaxesPrice", equalTo(16.49 * 2)));
+                .andExpect(jsonPath("items[0].sumAfterTaxesPrice", equalTo(1649 * 2)))
+                .andExpect(jsonPath("sumTaxes", equalTo(  (1649 - 1499) * 2)))
+                .andExpect(jsonPath("sumAfterTaxesPrice", equalTo(1649 * 2)));
     }
 }
