@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class Item {
+    private final String name;
     private final int quantity;
     private final float price;
     private final boolean imported;

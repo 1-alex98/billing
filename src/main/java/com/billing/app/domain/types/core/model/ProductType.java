@@ -11,10 +11,9 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
 public class ProductType{
     @Id
     @Nullable
