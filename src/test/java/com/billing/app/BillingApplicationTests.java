@@ -9,9 +9,5 @@ class BillingApplicationTests {
     @Test
     void contextLoads() {
     }
-    @Test
-    void fail() {
-        throw new RuntimeException("hi");
-    }
 
 }
