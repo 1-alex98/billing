@@ -1,0 +1,34 @@
+version: '3.5'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-banana}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+  billing:
+    image: docker.io/library/billing:0.0.1-SNAPSHOT
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_HOST: ${POSTGRES_HOST:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-banana}
+      APP_ADMINPASSWORD: ${ADMIN_PASSWORD:-banana}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
+    networks:
+      - postgres
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  postgres:
