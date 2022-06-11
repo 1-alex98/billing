@@ -41,8 +41,11 @@ public class ProductTypeIntegrationTest {
                             """
                             {
                                 "id":"wood",
-                                "name":"Wood"
-                            }      
+                                "name":"Wood",
+                                "description":"Wood can burn",
+                                "valueAddedTax":0.10,
+                                "customs":0.05
+                            }     
                             """
                         )
                         .contentType("application/json")
@@ -75,8 +78,10 @@ public class ProductTypeIntegrationTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andDo(expectNoException())
-                .andExpect(jsonPath("[0].name", equalTo("name")))
                 .andExpect(jsonPath("[0].id", equalTo("id")))
-                .andExpect(jsonPath("[0].description", equalTo("des")));
+                .andExpect(jsonPath("[0].name", equalTo("name")))
+                .andExpect(jsonPath("[0].description", equalTo("des")))
+                .andExpect(jsonPath("[0].valueAddedTax", equalTo(0.10)))
+                .andExpect(jsonPath("[0].customs", equalTo(0.05)));
     }
 }

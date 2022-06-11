@@ -20,7 +20,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_HOST: ${POSTGRES_HOST:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-banana}
-      APP_ADMINPASSWORD: ${ADMIN_PASSWORD:-banana}
+      APP_ADMINPASSWORD: ${ADMIN_PASSWORD:?err}
     restart: unless-stopped
     ports:
       - "127.0.0.1:8080:8080"
