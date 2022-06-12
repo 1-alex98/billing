@@ -1,3 +1,4 @@
+![test workflow](https://github.com/1-alex98/billing/actions/workflows/test.yml/badge.svg)
 # Billing service
 Allows creating bills by sending information about the items in json. The application outputs either json or an PDF.
 ## Assumptions made
@@ -113,51 +114,51 @@ results in
 
 ```json
 {
-	"items": [
-		{
-			"name": "bottle of perfume",
-			"quantity": 1,
-			"price": 2799,
-			"imported": true,
-			"typeId": null,
-			"sumRawPrice": 2799,
-			"sumTaxes": 420,
-			"sumAfterTaxesPrice": 3219
-		},
-		{
-			"name": "bottle of perfume",
-			"quantity": 1,
-			"price": 1899,
-			"imported": false,
-			"typeId": null,
-			"sumRawPrice": 1899,
-			"sumTaxes": 190,
-			"sumAfterTaxesPrice": 2089
-		},
-		{
-			"name": "packet of headache pills",
-			"quantity": 1,
-			"price": 975,
-			"imported": false,
-			"typeId": "meds",
-			"sumRawPrice": 975,
-			"sumTaxes": 0,
-			"sumAfterTaxesPrice": 975
-		},
-		{
-			"name": "chocolates",
-			"quantity": 1,
-			"price": 1125,
-			"imported": true,
-			"typeId": "food",
-			"sumRawPrice": 1125,
-			"sumTaxes": 55,
-			"sumAfterTaxesPrice": 1180
-		}
-	],
-	"sumRawPrice": 6798,
-	"sumTaxes": 665,
-	"sumAfterTaxesPrice": 7463
+  "items": [
+    {
+      "name": "bottle of perfume",
+      "quantity": 1,
+      "price": 2799,
+      "imported": true,
+      "typeId": null,
+      "sumRawPrice": 2799,
+      "sumTaxes": 420,
+      "sumAfterTaxesPrice": 3219
+    },
+    {
+      "name": "bottle of perfume",
+      "quantity": 1,
+      "price": 1899,
+      "imported": false,
+      "typeId": null,
+      "sumRawPrice": 1899,
+      "sumTaxes": 190,
+      "sumAfterTaxesPrice": 2089
+    },
+    {
+      "name": "packet of headache pills",
+      "quantity": 1,
+      "price": 975,
+      "imported": false,
+      "typeId": "meds",
+      "sumRawPrice": 975,
+      "sumTaxes": 0,
+      "sumAfterTaxesPrice": 975
+    },
+    {
+      "name": "chocolates",
+      "quantity": 1,
+      "price": 1125,
+      "imported": true,
+      "typeId": "food",
+      "sumRawPrice": 1125,
+      "sumTaxes": 55,
+      "sumAfterTaxesPrice": 1180
+    }
+  ],
+  "sumRawPrice": 6798,
+  "sumTaxes": 665,
+  "sumAfterTaxesPrice": 7463
 }
 ```
 
