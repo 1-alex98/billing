@@ -1,0 +1,318 @@
+_type: export
+__export_format: 4
+__export_date: 2022-06-12T15:54:53.325Z
+__export_source: insomnia.desktop.app:v2022.3.0
+resources:
+  - _id: req_1f853f4441d24ce5b2cdc10579360f20
+    parentId: wrk_6d61ab850a6b42c38aba16bc02b0d257
+    modified: 1655048788082
+    created: 1654267882006
+    url: http://localhost:8080/types/initialization
+    name: init types
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: ""
+    parameters: [ ]
+    headers:
+      - id: pair_99d8a3b792674703acfd6d8b2a1df493
+        name: username
+        value: Isi
+        description: ""
+      - id: pair_24967ababa8441f7bddab35cd922f75c
+        name: password
+        value: pass
+        description: ""
+      - name: Content-Type
+        value: application/json
+        id: pair_f7225b8bea324a03ba9676ca95c77add
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: admin
+      password: admin
+    metaSortKey: -1653057795636
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_6d61ab850a6b42c38aba16bc02b0d257
+    parentId: null
+    modified: 1653036056006
+    created: 1653036056006
+    name: New Document
+    description: ""
+    scope: design
+    _type: workspace
+  - _id: req_35928173946f4db0b48112dfbf28c6ad
+    parentId: wrk_6d61ab850a6b42c38aba16bc02b0d257
+    modified: 1655048697389
+    created: 1654978819472
+    url: http://localhost:8080/types
+    name: get types
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    parameters: [ ]
+    headers:
+      - id: pair_99d8a3b792674703acfd6d8b2a1df493
+        name: username
+        value: Isi
+        description: ""
+      - id: pair_24967ababa8441f7bddab35cd922f75c
+        name: password
+        value: pass
+        description: ""
+      - name: Content-Type
+        value: application/json
+        id: pair_f7225b8bea324a03ba9676ca95c77add
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: admin
+      password: admin
+    metaSortKey: -1653057795586
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0144ba73aeca46f48decba3c95d01d5d
+    parentId: wrk_6d61ab850a6b42c38aba16bc02b0d257
+    modified: 1655049192746
+    created: 1655049161865
+    url: http://localhost:8080/types
+    name: create type
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        		"id":"wood",
+        		"name":"Wood",
+        		"description":"Wood can burn",
+        		"valueAddedTax":0.10,
+        		"customs":0.05
+        }
+    parameters: [ ]
+    headers:
+      - id: pair_99d8a3b792674703acfd6d8b2a1df493
+        name: username
+        value: Isi
+        description: ""
+      - id: pair_24967ababa8441f7bddab35cd922f75c
+        name: password
+        value: pass
+        description: ""
+      - name: Content-Type
+        value: application/json
+        id: pair_f7225b8bea324a03ba9676ca95c77add
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: admin
+      password: admin
+    metaSortKey: -1653057795561
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_22bb976e771346ffa7fed0cc2f394d05
+    parentId: wrk_6d61ab850a6b42c38aba16bc02b0d257
+    modified: 1655048714717
+    created: 1654978862273
+    url: http://localhost:8080/bill
+    name: create bill pdf
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-2
+                               [
+                                    {
+                                        "price": 2799,
+                                        "name": "bottle of perfume",
+                                        "quantity": 1,
+                                        "imported": true
+                                    },
+                                    {
+                                        "price": 1899,
+                                        "name": "bottle of perfume",
+                                        "quantity": 1,
+                                        "imported": false
+                                    },
+                                    {
+                                        "price": 975,
+                                        "name": "packet of headache pills",
+                                        "quantity": 1,
+                                        "typeId": "meds"
+                                    },
+                                    {
+                                        "price": 1125,
+                                        "name": "chocolates",
+                                        "quantity": 1,
+                                        "typeId": "food",
+                                        "imported": true
+                                    }
+                                ]
+    parameters: [ ]
+    headers:
+      - id: pair_99d8a3b792674703acfd6d8b2a1df493
+        name: username
+        value: Isi
+        description: ""
+      - id: pair_24967ababa8441f7bddab35cd922f75c
+        name: password
+        value: pass
+        description: ""
+      - name: Content-Type
+        value: application/json
+        id: pair_f7225b8bea324a03ba9676ca95c77add
+      - id: pair_bfefe9b3f5d4484fa3abeb3973d7a913
+        name: Accept
+        value: application/pdf
+        description: ""
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: admin
+      password: admin
+    metaSortKey: -1653057795536
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f735396735174530b05d18e69b53f343
+    parentId: wrk_6d61ab850a6b42c38aba16bc02b0d257
+    modified: 1655048723759
+    created: 1655048710871
+    url: http://localhost:8080/bill
+    name: create bill json
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-2
+                               [
+                                    {
+                                        "price": 2799,
+                                        "name": "bottle of perfume",
+                                        "quantity": 1,
+                                        "imported": true
+                                    },
+                                    {
+                                        "price": 1899,
+                                        "name": "bottle of perfume",
+                                        "quantity": 1,
+                                        "imported": false
+                                    },
+                                    {
+                                        "price": 975,
+                                        "name": "packet of headache pills",
+                                        "quantity": 1,
+                                        "typeId": "meds"
+                                    },
+                                    {
+                                        "price": 1125,
+                                        "name": "chocolates",
+                                        "quantity": 1,
+                                        "typeId": "food",
+                                        "imported": true
+                                    }
+                                ]
+    parameters: [ ]
+    headers:
+      - id: pair_99d8a3b792674703acfd6d8b2a1df493
+        name: username
+        value: Isi
+        description: ""
+      - id: pair_24967ababa8441f7bddab35cd922f75c
+        name: password
+        value: pass
+        description: ""
+      - name: Content-Type
+        value: application/json
+        id: pair_f7225b8bea324a03ba9676ca95c77add
+      - id: pair_bfefe9b3f5d4484fa3abeb3973d7a913
+        name: Accept
+        value: application/json
+        description: ""
+    authentication:
+      type: basic
+      useISO88591: false
+      disabled: false
+      username: admin
+      password: admin
+    metaSortKey: -1653057795486
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_2c49ccb1603b9c8d9bf117433058c4709d9b0aff
+    parentId: wrk_6d61ab850a6b42c38aba16bc02b0d257
+    modified: 1653036056025
+    created: 1653036056025
+    name: Base Environment
+    data: { }
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1653036056025
+    _type: environment
+  - _id: jar_2c49ccb1603b9c8d9bf117433058c4709d9b0aff
+    parentId: wrk_6d61ab850a6b42c38aba16bc02b0d257
+    modified: 1655048057920
+    created: 1653036056029
+    name: Default Jar
+    cookies:
+      - key: JSESSIONID
+        value: 0700F3BF20A84FD82BF94CFA9F0825F7
+        domain: localhost
+        path: /
+        httpOnly: true
+        hostOnly: true
+        creation: 2022-06-11T19:53:17.062Z
+        lastAccessed: 2022-06-12T15:34:17.919Z
+        id: "08774236011138514"
+    _type: cookie_jar
+  - _id: spc_54e9928e454d4e28b08a4a20f12e68b7
+    parentId: wrk_6d61ab850a6b42c38aba16bc02b0d257
+    modified: 1655048677231
+    created: 1653036056020
+    fileName: Billing
+    contents: ""
+    contentType: yaml
+    _type: api_spec
+  - _id: uts_05ebcfa1d62e4d8086b6bd8ee288e463
+    parentId: wrk_6d61ab850a6b42c38aba16bc02b0d257
+    modified: 1653036056035
+    created: 1653036056035
+    name: Example Test Suite
+    _type: unit_test_suite
