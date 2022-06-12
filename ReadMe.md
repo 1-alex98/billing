@@ -35,4 +35,5 @@ results in
 - OPEN API specs
 - Maybe GRAPHQL over JSON
 - Testing PDF content
+- Testing PDF content
 - Upload Docker image to registry
