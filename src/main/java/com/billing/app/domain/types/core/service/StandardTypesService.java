@@ -1,7 +1,6 @@
 package com.billing.app.domain.types.core.service;
 
 import com.billing.app.domain.types.core.model.ProductType;
-import com.billing.app.domain.types.core.ports.incoming.CreateTypePort;
 import com.billing.app.domain.types.core.ports.incoming.InitializeTypesPort;
 import com.billing.app.domain.types.core.ports.outgoing.TypeDataBasePort;
 import lombok.RequiredArgsConstructor;

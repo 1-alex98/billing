@@ -1,8 +1,6 @@
 package com.billing.app.domain.billing.application;
 
-import com.billing.app.domain.types.core.model.ProductType;
 import com.billing.app.domain.types.core.ports.incoming.InitializeTypesPort;
-import com.billing.app.domain.types.core.ports.outgoing.TypeDataBasePort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +10,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static com.billing.app.TestUtils.expectNoException;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
