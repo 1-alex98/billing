@@ -21,7 +21,7 @@ run `docker compose up -d`.
 
 ## How to communicate
 
-Blow you can see request that can be made to the Backend.
+Below you can see request that can be made to the Backend.
 See insomnia collection [import](docs/billing.yaml).
 
 ### Types
