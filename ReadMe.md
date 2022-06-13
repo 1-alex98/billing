@@ -77,9 +77,9 @@ Post on `/types` with
 creates the corresponding type.
 Post on `/types/initialization` initializes standard types.
 
-### Authetification
+### Authentication
 
-Writing actions require authetification. In development mode user and password is admin. HTTP basic auth is used.
+Writing actions require authentication. In development mode user and password is admin. HTTP basic auth is used.
 
 ### Bill creation
 
