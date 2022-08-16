@@ -1,5 +1,6 @@
 ![test workflow](https://github.com/1-alex98/billing/actions/workflows/test.yml/badge.svg)
 # Billing service
+Code challange for an interview.
 Allows creating bills by sending information about the items in json. The application outputs either json or an PDF.
 ## Assumptions made
 - The application is used in a web context
